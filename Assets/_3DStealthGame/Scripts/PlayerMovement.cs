@@ -9,16 +9,21 @@ public class PlayerMovement : MonoBehaviour
     public float turnSpeed = 20f;    // Parametar kojim se definiše brzina promjene pravca
 
     Rigidbody rb;    // Referenca na Rigidbody komponentu
+    Animator anim;    // Referenca na Animator komponentu
 
     void Start()
     {
         rb = GetComponent<Rigidbody> ();    // Preuzimanje RigidBody komponente
+        anim = GetComponent<Animator>();     // Preuzimanje Animator komponente
         moveAction.Enable();    // Uključena InputAvtion komponenta
     }
 
     void FixedUpdate()
     {
         var pos = moveAction.ReadValue<Vector2>();    // Očitavanje ulaza
+
+        bool moving = !Mathf.Approximately (pos.magnitude, 0f);    // Lik se kreće ako intenzitet vektora kretanja nije približno jednak nuli
+        anim.SetBool ("IsWalking", moving);    // Podesi parametar animacije, tako da odgovara tome da li se lik kreće ili stoji
 
         Vector3 movement = new Vector3(pos.x, 0f, pos.y);  // Kreiranje vektora pravca, na osnovu očitanih kontrola
         movement.Normalize ();    // Normalizacija vektora, tako da ima intenzitet 1, tako da vrijednosti kontrola ne utiču na brzinu kretanja lika
