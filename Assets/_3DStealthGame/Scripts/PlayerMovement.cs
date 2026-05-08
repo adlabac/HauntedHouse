@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = Vector3.RotateTowards(transform.forward, movement, turnSpeed * Time.deltaTime, 0f);    // Odredi željeni pravac u kom treba okrenuti lika, u zavisnosti od proteklog vremena, ali ne brže od zadatog parametra
         Quaternion rotation = Quaternion.LookRotation(direction);    // Odredi ugao rotacije na osnovu izračunatog pravca
 
-        rb.MovePosition(rb.position + movement * walkSpeed * Time.deltaTime);      // Pomjeri lika u željenom pravcu, za dužinu definisanu njegovim root motionom
+        rb.MovePosition(rb.position + movement * walkSpeed * Time.deltaTime);      // Pomjeri lika u željenom pravcu, u skladu sa zadatom brzinom
         rb.MoveRotation(rotation);    // Postavi željeni ugao za koji je lik okrenut
     }
 }
