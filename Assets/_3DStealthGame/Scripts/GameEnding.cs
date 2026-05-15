@@ -12,6 +12,10 @@ public class GameEnding : MonoBehaviour
     public GameObject player;    // Referenca ka objektu igrača
     public UIDocument uiDocument;    // Referenca ka UI objektu
 
+    public AudioSource exitAudio;     // Referenca ka zvuku koji se reprodukuje kada se igra uspješno završi
+    public AudioSource caughtAudio;    // Referenca ka zvuku  koji se reprodukuje kada je igrač uhvaćen
+    bool audioPlayed;    // Flag koji govori da li je zvuk kraja nivoa/hvatanja već reprodukovan
+
     bool playerAtExit;    // Flag koji govori da li je igrač stigao do kraja nivoa
     bool playerCaught;    // Flag koji govori da li je igrač uhvaćen
 
@@ -35,11 +39,11 @@ public class GameEnding : MonoBehaviour
     {
         if (playerAtExit)
         {
-            EndLevel(endScreen, false);    // Ako je igrač stigao do kraja nivoa prikaži odgovarajuću sliku i završi igru
+            EndLevel(endScreen, false, exitAudio);    // Ako je igrač stigao do kraja nivoa prikaži odgovarajuću sliku i završi igru
         }
         else if (playerCaught)
         {
-            EndLevel(caughtScreen, true);    // Ako je igrač uhvaćen prikaži odgovarajuću sliku i restartuj nivo
+            EndLevel(caughtScreen, true, caughtAudio);    // Ako je igrač uhvaćen prikaži odgovarajuću sliku i restartuj nivo
         }
     }
 
@@ -51,10 +55,16 @@ public class GameEnding : MonoBehaviour
         }
     }
 
-    void EndLevel(VisualElement element, bool restart)
+    void EndLevel(VisualElement element, bool restart, AudioSource audioSource)
     {
+        if (!audioPlayed)    // Da li je zvuk već reprodukovan?
+        {
+            audioSource.Play();    // Ako nije, reprodukuj željeni zvuk
+            audioPlayed = true;    // Postavi flag, da se u sljedećem pozivu funkcije ne bi ponovo pokrenula reprodukcija od početka
+        }
+
         timer += Time.deltaTime;    // Uvećaj tajmer za vrijeme proteklo od prethodnog frejma
-        element.style.opacity = timer / fadeDuration;
+        element.style.opacity = timer / fadeDuration;    // Podesi transparenciju završne slike u skladu sa proteklim vremenom
 
         if (timer > fadeDuration + displayImageDuration)    // Da li je slika prikazana u skladu sa zadatim trajanjima?
         {
