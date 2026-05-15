@@ -3,6 +3,7 @@ using UnityEngine;
 public class Observer : MonoBehaviour
 {
     public Transform player;    // Referenca ka Transform komponenti igrača
+    public GameEnding gameEnding;
     bool PlayerInRange = false;    // Flag koji govori da li je igrač ušao u vidno polje neprijatelja
 
     private void OnTriggerEnter(Collider other)
@@ -33,7 +34,7 @@ public class Observer : MonoBehaviour
             {
                 if (raycastHit.collider.transform == player)    // Da li je taj objekat igrač?
                 {
-                    Debug.Log("Vidim te!");    // Ispiši u log da je igrač ugledan
+                    gameEnding.CaughtPlayer();    // Proglasi igrača uhvaćenim pozivom odgovarajuće metode iz klase GameEnding
                 }
             }
         }

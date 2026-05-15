@@ -265,6 +265,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614601463}
+    - target: {fileID: 687838123160417607, guid: 59601650c6414ff448d5144e46b2a4a6,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 662626852}
     - target: {fileID: 3547090646005483940, guid: 59601650c6414ff448d5144e46b2a4a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -564,6 +569,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614601463}
+    - target: {fileID: 8426324218298089466, guid: 910ff55d337fecd4e9d4a340484c1ecb,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 662626852}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -597,6 +607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 662626851}
   - component: {fileID: 662626850}
+  - component: {fileID: 662626852}
   m_Layer: 0
   m_Name: GameEnding
   m_TagString: Untagged
@@ -640,6 +651,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &662626852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662626849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99c16eee623b0749bbee185eac67919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameEnding
+  fadeDuration: 1
+  displayImageDuration: 1
+  player: {fileID: 1467104872}
+  uiDocument: {fileID: 1683971678}
 --- !u!1 &669483380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1089,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1244794679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1467104872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3089347703451502632, guid: 2e42abb9510a3e24da88d900242ddb40,
+    type: 3}
+  m_PrefabInstance: {fileID: 2481261014380073320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502157483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,6 +1441,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614601463}
+    - target: {fileID: 8426324218298089466, guid: 910ff55d337fecd4e9d4a340484c1ecb,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 662626852}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1494,6 +1532,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614601463}
+    - target: {fileID: 687838123160417607, guid: 59601650c6414ff448d5144e46b2a4a6,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 662626852}
     - target: {fileID: 3547090646005483940, guid: 59601650c6414ff448d5144e46b2a4a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1658,6 +1701,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614601463}
+    - target: {fileID: 8426324218298089466, guid: 910ff55d337fecd4e9d4a340484c1ecb,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 662626852}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1682,6 +1730,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614601463}
+    - target: {fileID: 687838123160417607, guid: 59601650c6414ff448d5144e46b2a4a6,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 662626852}
     - target: {fileID: 3547090646005483940, guid: 59601650c6414ff448d5144e46b2a4a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1913,6 +1966,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 614601463}
+    - target: {fileID: 8426324218298089466, guid: 910ff55d337fecd4e9d4a340484c1ecb,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 662626852}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
