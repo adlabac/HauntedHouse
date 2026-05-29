@@ -10,12 +10,15 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;    // Referenca na Rigidbody komponentu
     Animator anim;    // Referenca na Animator komponentu
-    Vector2 input;
+    Vector2 input;    // Stanje ulaznog uređaja
+    AudioSource audioSource;    // Referenca na AudioSource komponentu
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody> ();    // Preuzimanje RigidBody komponente
         anim = GetComponent<Animator>();     // Preuzimanje Animator komponente
+        audioSource = GetComponent<AudioSource>();    // Preuzimanje AudioSource komponente
         moveAction.Enable();    // Uključena InputAvtion komponenta
     }
 
@@ -26,6 +29,18 @@ public class PlayerMovement : MonoBehaviour
 
         bool moving = !Mathf.Approximately(input.magnitude, 0f);    // Lik se kreće ako intenzitet vektora kretanja nije približno jednak nuli
         anim.SetBool("IsWalking", moving);    // Podesi parametar animacije, tako da odgovara tome da li se lik kreće ili stoji
+
+        if (moving)    // Da li se lik kreće
+        {
+            if (!audioSource.isPlaying)    // Da li se zvuk već reprodukuje
+            {
+                audioSource.Play();    // Pokrenu reprodukciju zvuka koraka
+            }
+        }
+        else    // Lik stoji
+        {
+            audioSource.Stop();    // Zaustavi reprodukciju zvuka koraka
+        }
     }
 
     // Rad sa fizikom u fiksnoj petlji

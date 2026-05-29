@@ -1217,14 +1217,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2481261014380073320}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &1467104877
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467104872}
-  m_Enabled: 1
 --- !u!1 &1502157483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,19 +2272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8173400634605728415, guid: 2e42abb9510a3e24da88d900242ddb40,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3089347703451502632, guid: 2e42abb9510a3e24da88d900242ddb40,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1467104877}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e42abb9510a3e24da88d900242ddb40, type: 3}
 --- !u!1001 &6578734803089703251
 PrefabInstance:
