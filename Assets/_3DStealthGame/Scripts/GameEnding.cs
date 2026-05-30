@@ -24,6 +24,10 @@ public class GameEnding : MonoBehaviour
     private VisualElement endScreen;    // Referenca UI elementu koji se prikazuje kada se igra uspješno završi
     private VisualElement caughtScreen;    // Referenca UI elementu koji se prikazuje kada je igrač uhvaćen
 
+    private float gameTimer = 0f;    // Vrijednost tajmera
+    private bool gameTimerIsTicking = false;    // Flag koji govori da li tajmer odbrojava
+    private Label gameTimerLabel;    // Referenca ka labelu koji prikayuje tajmer
+
     public void CaughtPlayer()  // Javna metoda koja omogućava da se igrač proglasi uhvaćenim
     {
         playerCaught = true;
@@ -33,6 +37,10 @@ public class GameEnding : MonoBehaviour
     {
         endScreen = uiDocument.rootVisualElement.Q<VisualElement>("EndScreen");    // Preuzimanje UI elementa za uspješan završetak
         caughtScreen = uiDocument.rootVisualElement.Q<VisualElement>("CaughtScreen");    // Preuzimanje UI elementa za neuspješan završetak
+        gameTimerLabel = uiDocument.rootVisualElement.Q<Label>("TimerLabel");    // Preuzimanje UI elementa za prikaz tajemra
+        gameTimer = 0.0f;    // Postavljanje tajmera na nulu
+        gameTimerIsTicking = true;    // Tajmer odbrojava
+        UpdateTimer();    // Ažuriraj tajmer na ekranu
     }
 
     void Update()
@@ -44,6 +52,27 @@ public class GameEnding : MonoBehaviour
         else if (playerCaught)
         {
             EndLevel(caughtScreen, true, caughtAudio);    // Ako je igrač uhvaćen prikaži odgovarajuću sliku i restartuj nivo
+        }
+
+        if (gameTimerIsTicking)    // Da li tajmer odbrojava
+        {
+            gameTimer += Time.deltaTime;    // Uvećaj vrijednost tajmera za proteklo vrijeme
+            UpdateTimer();    // Ažuriraj tajmer na ekranu
+        }
+    }
+
+    void UpdateTimer()  // Ažuriranje tajmera na ekranu
+    {
+        int minutes = Mathf.FloorToInt(gameTimer / 60);    // Izračunaj broj minuta
+        int seconds = Mathf.FloorToInt(gameTimer % 60);    // Izračunaj broj sekundi
+        int hundredths = Mathf.FloorToInt((gameTimer % 1) * 100);    // Izračunaj broj stotinki
+        if (minutes > 0)    // Da li je broj minuta veći od nule
+        {
+            gameTimerLabel.text = string.Format("{0:0}:{1:00}.{2:00}", minutes, seconds, hundredths);    // Prikaži tajmer u formatu 0:00.00
+        }
+        else
+        {
+            gameTimerLabel.text = string.Format("{0:0}.{1:00}", seconds, hundredths);    // Prikaži tajmer u formatu 0.00
         }
     }
 
@@ -57,6 +86,8 @@ public class GameEnding : MonoBehaviour
 
     void EndLevel(VisualElement element, bool restart, AudioSource audioSource)
     {
+        gameTimerIsTicking = false;    // Zaustavi tajmer
+
         if (!audioPlayed)    // Da li je zvuk već reprodukovan?
         {
             audioSource.Play();    // Ako nije, reprodukuj željeni zvuk
