@@ -8,10 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movingDirection;    // Smjer koji daju ulazne kontrole
     Rigidbody rb;    // Referenca na Rigidbody komponentu
+    Animator anim;    // Referenca na Animator komponentu
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();    // Preuzimanje RigidBody komponente
+        anim = GetComponent<Animator>();    // Preuzimanje Animator komponente
     }
 
     void FixedUpdate()
@@ -29,5 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         movingDirection = value.Get<Vector2>();    // Očitavanje ulaznih kontrola kada dođe do promjene
+        bool moving = !Mathf.Approximately(movingDirection.magnitude, 0f);    // Lik se kreće ako intenzitet vektora kretanja nije približno jednak nul
+        anim.SetBool("IsWalking", moving);    // Podesi parametar animacije, tako da odgovara tome da li se lik kreće ili stoji
     }
 }
